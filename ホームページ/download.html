@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>ダウンロード配布所</title>
+  <style>
+    .agreement-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      padding: 20px;
+      text-align: center;
+      z-index: 10000;
+      box-shadow: 0 0 10px white;
+      display: none; /* Initially hidden */
+    }
+    .agreement-popup button {
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .agreement-popup button:hover {
+      background-color: white;
+      color: black;
+    }
+  </style>
+  <script>
+    let downloadLink = ''; // Variable to hold the download link
+
+    function showAgreementPopup(link) {
+      downloadLink = link;
+      var popup = document.getElementById('agreementPopup');
+      popup.style.display = 'block';
+    }
+
+    function agreeToTerms() {
+      document.getElementById('agreementPopup').style.display = 'none';
+      window.location.href = downloadLink; // Start the download
+    }
+
+    function disagreeToTerms() {
+      document.getElementById('agreementPopup').style.display = 'none';
+    }
+
+  </script>
+</head>
+<body>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="menu-tab">
+    <ul>
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="characters.html">キャラ紹介</a></li>
+      <li><a href="download.html">ダウンロード場所</a></li>
+    </ul>
+  </div>
+  <header>
+    <h1>配布所</h1>
+  </header>
+  <main>
+    <section class="download-section">
+      <h2>UTAU 配布ファイル</h2>
+      <p>キャラの名前を押すと音源がダウンロードできるよ。</p>
+      <hr class="divider"> <!-- 区切り線 -->
+      <ul class="download-list">
+        <li>
+          <div class="character">
+            <img src="nea_icon.jpg" alt="Neaのアイコン" class="character-icon">
+            <div class="character-info">
+              <button class="download-button" onclick="showAgreementPopup('Nea単独音.zip')">Nea 単独音</button>
+              <p>原音設定：okinai</p>
+              <p>原音設定協力：カノシタ（きのこ）様 ,かたつむり観光客 様</p>
+              <p>テスター協力：ニリ缶 様</p>
+            </div>
+          </div>
+        </li>
+        <hr class="divider"> <!-- 区切り線 -->
+        <li>
+          <div class="character">
+            <img src="neo_icon.jpg" alt="Neoのアイコン" class="character-icon">
+            <div class="character-info">
+              <button class="download-button" onclick="showAgreementPopup('Neo単独音.zip')">Neo 単独音</button>
+              <p>原音設定：okinai</p>
+              <p>テスター協力：カノシタ（きのこ）様 ,かたつむり観光客 様,ニリ缶 様</p>
+            </div>
+          </div>
+        </li>
+        <!-- 他のファイルも同様に追加 -->
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 okinai</p>
+  </footer>
+  <div id="agreementPopup" class="agreement-popup">
+    <p>利用規約をご一読の上、同意しますか？</p>
+    <button onclick="agreeToTerms()">はい</button>
+    <button onclick="disagreeToTerms()">いいえ</button>
+  </div>
+  <script>
+    function toggleMenu() {
+      var menuTab = document.querySelector('.menu-tab');
+      menuTab.classList.toggle('show-menu');
+    }
+  </script>
+</body>
+</html>
+
+

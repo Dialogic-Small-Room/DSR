@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キャラ紹介</title>
+  <link rel="stylesheet" href="styles.css"> <!-- styles.cssをリンク -->
+  <style>
+    /* キャラクターを2列に並べるためのスタイル */
+    .character-column {
+      display: flex;
+      justify-content: center; /* 中央揃え */
+      flex-wrap: wrap; /* オーバーフローした場合に折り返す */
+    }
+    /* キャラクター要素のスタイル */
+    .character {
+      text-align: center; /* 中央揃え */
+      width: 200px; /* キャラクター要素の幅 */
+      margin: 10px; /* キャラクター要素のマージン */
+      cursor: pointer; /* ポインターを指定してクリック可能にする */
+    }
+    /* キャラクターの画像を少し大きくする */
+    .character img {
+      width: 100%; /* 画像の幅を親要素に合わせる */
+      height: auto; /* 高さを自動調整 */
+    }
+    /* キャラ名のスタイル */
+    .character h2 {
+      margin-top: 10px; /* キャラ名の上のマージン */
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- メニューアイコン -->
+  <div class="menu-tab">
+    <ul>
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="characters.html">キャラ紹介</a></li>
+      <li><a href="download.html">ダウンロード場所</a></li>
+    </ul>
+  </div>
+  <header>
+    <h1>キャラ紹介</h1>
+    <!-- 注意書き -->
+    <p>キャラクターを押すとプロフィールが見られるよ！</p>
+  </header>
+  <main>
+    <!-- キャラクターを2列に並べる -->
+    <div class="character-column">
+      <!-- Neaのキャラクター -->
+      <div class="character" onclick="location.href='nea_profile.html'">
+        <img src="nea_icon.jpg" alt="Neaの顔アイコン">
+        <h2>Nea</h2>
+        <!-- Neaの情報やイラストをここに追加 -->
+      </div>
+      <!-- Neoのキャラクター -->
+      <div class="character" onclick="location.href='neo_profile.html'">
+        <img src="neo_icon.jpg" alt="Neoの顔アイコン">
+        <h2>Neo</h2>
+        <!-- Neoの情報やイラストをここに追加 -->
+      </div>
+      <!-- Pierisのキャラクター -->
+      <div class="character" onclick="location.href='pieris_profile.html'">
+        <img src="pieris_icon.jpg" alt="Pierisの顔アイコン">
+        <h2>Pieris</h2>
+        <!-- Pierisの情報やイラストをここに追加 -->
+      </div>
+      <!-- ヒヨコのキャラクター -->
+      <div class="character" onclick="location.href='hiyoko_profile.html'">
+        <img src="hiyoko_icon.jpg" alt="ヒヨコの顔アイコン">
+        <h2>ヒヨコ</h2>
+        <!-- ヒヨコの情報やイラストをここに追加 -->
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 okinai</p>
+  </footer>
+  <script>
+    function toggleMenu() {
+      var menuTab = document.querySelector('.menu-tab');
+      menuTab.classList.toggle('show-menu');
+    }
+  </script>
+</body>
+</html>

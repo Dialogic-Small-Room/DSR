@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- styles.cssをリンク -->
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* 背景色を黒に設定 */
+      color: white; /* テキストの色を白に設定 */
+      overflow-x: hidden; /* 横スクロールバーを非表示に */
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      background-color: black;
+      padding: 10px;
+    }
+
+    .menu-tab {
+      height: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      background-color: rgb(0, 0, 0);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* 上揃えに変更 */
+      align-items: center; /* 中央揃え */
+    }
+
+    .menu-tab ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-tab li {
+      margin-bottom: 10px;
+    }
+
+    .menu-tab a {
+      text-decoration: none;
+      color: white;
+    }
+
+    header {
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      position: relative;
+    }
+
+    .profile-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .profile-details {
+      text-align: center;
+    }
+
+    .extra-info {
+      display: none; /* 初期状態では非表示 */
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .other-characters {
+      text-align: center;
+      border: 2px solid white; /* 白い枠線を追加 */
+      padding: 20px;
+      margin-top: 40px; /* スペースを追加 */
+    }
+
+    .other-characters h3 {
+    }
+
+    .other-characters img {
+      width: 100px;
+      height: auto;
+      margin: 10px;
+    }
+
+    .show-more-button {
+      margin-top: 20px;
+      padding: 15px 30px; /* ボタンを大きくする */
+      font-size: 18px; /* フォントサイズを大きくする */
+      cursor: pointer;
+      background-color: black; /* ボタンの背景色を黒に設定 */
+      color: white; /* ボタンの文字色を白に設定 */
+      border: 2px solid white; /* ボタンの縁を白に設定 */
+      border-radius: 5px; /* ボタンの角を少し丸める */
+      animation: wiggle 0.3s infinite; /* ぷるぷる揺れるアニメーションを追加 */
+      text-align: center;
+      display: inline-block; /* ボタンをインラインブロックに設定して中央揃え */
+    }
+
+    @keyframes wiggle {
+      0%, 100% {
+        transform: rotate(-3deg);
+      }
+      50% {
+        transform: rotate(3deg);
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center; /* ボタンを中央に揃える */
+      width: 100%;
+      margin-bottom: 40px; /* スペースを追加 */
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- メニューアイコン -->
+  <div class="menu-tab">
+    <ul>
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="characters.html">キャラ紹介</a></li>
+      <li><a href="download.html">ダウンロード場所</a></li>
+    </ul>
+  </div>
+  <header>
+  </header>
+  <main>
+    <!-- 初期表示のプロフィール画像 -->
+    <div class="profile-image" id="initialImage">
+      <img src="nea_profile_image.jpg" alt="pierisのプロフィール画像">
+      <div class="button-container">
+        <button class="show-more-button" onclick="toggleImage()">Neaプロフィール</button>
+      </div>
+    </div>
+    <!-- 切り替え後のプロフィール画像 -->
+    <div class="profile-image" id="extraImage" style="display:none;">
+      <img src="neaura.jpg" alt="pierisURAのプロフィール画像">
+      <div class="button-container">
+        <button class="show-more-button" onclick="toggleImage()">戻る</button>
+      </div>
+    </div>
+    <!-- 他のキャラクターへのリンク -->
+    <div class="other-characters">
+      <h3>他のキャラクター</h3>
+      <!-- 他のキャラクターのアイコンとリンク -->
+      <a href="neo_profile.html"><img src="neo_icon.jpg" alt="neoのアイコン"></a>
+      <a href="pieris_profile.html"><img src="pieris_icon.jpg" alt="neaのアイコン"></a>
+      <a href="hiyoko_profile.html"><img src="hiyoko_icon.jpg" alt="hiyokoのアイコン"></a>
+    </div>
+  </main>
+  <footer> 
+    <p>&copy; 2024 okinai</p>
+  </footer>
+  <script>
+    function toggleMenu() {
+      var menuTab = document.querySelector('.menu-tab');
+      menuTab.classList.toggle('show-menu');
+    }
+
+    function toggleImage() {
+      var initialImage = document.getElementById('initialImage');
+      var extraImage = document.getElementById('extraImage');
+      var button = document.querySelector('.show-more-button');
+
+      if (initialImage.style.display === 'none') {
+        initialImage.style.display = 'block';
+        extraImage.style.display = 'none';
+        button.textContent = 'Neaのプロフィール';
+      } else {
+        initialImage.style.display = 'none';
+        extraImage.style.display = 'block';
+        button.textContent = '戻る';
+      }
+    }
+  </script>
+</body>
+</html>
